@@ -1,0 +1,16 @@
+CREATE TABLE users (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    username NVARCHAR(100) UNIQUE NOT NULL,
+    email NVARCHAR(256) UNIQUE NOT NULL,
+    password_hash NVARCHAR(512) NOT NULL,
+    gender NVARCHAR(10),
+    created_at DATETIME2 DEFAULT SYSDATETIME()
+);
+
+CREATE TABLE posts (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    user_id INT NOT NULL FOREIGN KEY REFERENCES users(id),
+    image_url NVARCHAR(1024),
+    caption NVARCHAR(2048),
+    created_at DATETIME2 DEFAULT SYSDATETIME()
+);
