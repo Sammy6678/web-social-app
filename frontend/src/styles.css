@@ -1,0 +1,13 @@
+/* frontend/src/styles.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fafafa;
+}
+a {
+  color: blue;
+  text-decoration: none;
+}
+button {
+  cursor: pointer;
+}
