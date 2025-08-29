@@ -14,7 +14,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read #This is required for actions/checkout
+      contents: read
+
+    defaults:
+      run:
+        working-directory: backend   # 👈 Yahan backend folder set kiya
 
     steps:
       - uses: actions/checkout@v4
@@ -39,15 +43,15 @@ jobs:
         with:
           name: python-app
           path: |
-            .
-            !venv/
+            backend/        # 👈 artifact me backend ka code save karo
+            !backend/venv/
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
     permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
+      id-token: write
+      contents: read
 
     steps:
       - name: Download artifact from build job
@@ -68,4 +72,4 @@ jobs:
         with:
           app-name: 'langunana-backend'
           slot-name: 'Production'
-          
+          package: .   # 👈 ab artifact se backend deploy hoga
