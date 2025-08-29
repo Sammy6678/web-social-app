@@ -1,9 +1,9 @@
-name: Function CI/CD
-on:
-  push:
-    paths:
-      - 'azure-function/**'
-    branches: [ main ]
+#name: Function CI/CD
+#on:
+#  push:
+   # paths:
+     # - 'azure-function/**'
+    #branches: [ main ]
 
 jobs:
   build-and-deploy:
