@@ -3,9 +3,9 @@ from fastapi import FastAPI, Depends, HTTPException, Header
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from db import SessionLocal
-from .models import Post
-from .auth import router as auth_router
-from .storage import generate_upload_sas
+from models import Post
+from auth import router as auth_router
+from storage import generate_upload_sas
 
 app = FastAPI(title="Social API")
 app.include_router(auth_router)
