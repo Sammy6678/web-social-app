@@ -3,7 +3,7 @@ name: Build and Deploy React App to Azure WebApp - langunana-frontend
 on:
   push:
     branches:
-      - main   # 👈 agar tumhari branch "main" nahi hai to yaha change karo
+      - main   # 👈 apni branch ka naam daalna (agar alag hai to)
   workflow_dispatch:
 
 jobs:
@@ -29,7 +29,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: react-dist
-          path: frontend/dist   # 👈 sirf dist folder upload hoga
+          path: frontend/dist/*   # 👈 dist ke andar ka content hi upload hoga
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,8 +49,3 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_745609D10A8B45969AC1E92CF58B8908 }}
 
       - name: Deploy to Azure WebApp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'langunana-frontend'   # 👈 frontend App Service ka naam
-          slot-name: 'Production'
-          package: .   # 👈 ab sirf dist/ content jayega wwwroot me
