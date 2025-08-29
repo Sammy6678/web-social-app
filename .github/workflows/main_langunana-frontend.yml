@@ -3,8 +3,12 @@ name: Build and Deploy React App to Azure WebApp - langunana-frontend
 on:
   push:
     branches:
-      - main   # 👈 apni branch ka naam daalna (agar alag hai to)
+      - main
   workflow_dispatch:
+
+permissions:
+  id-token: write    # 👈 Azure federated login ke liye required
+  contents: read     # 👈 repo code checkout ke liye
 
 jobs:
   build:
